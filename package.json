@@ -4,14 +4,14 @@
   "version": "3.5.5",
   "description": "Run any Apple Shortcut with just the tap of a button, and execute a custom unix command (or another shortcut!) after completion to handle its success/failure, using x-callback-url.",
   "license": "Apache-2.0",
-  "author": "duddu",
+  "author": "smj0x",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/duddu/homebridge-shortcuts-buttons.git"
+    "url": "git+https://github.com/smj0x/homebridge-shortcuts-buttons.git"
   },
-  "homepage": "https://github.com/duddu/homebridge-shortcuts-buttons#readme",
+  "homepage": "https://github.com/smj0x/homebridge-shortcuts-buttons#readme",
   "bugs": {
-    "url": "https://github.com/duddu/homebridge-shortcuts-buttons/issues"
+    "url": "https://github.com/smj0x/homebridge-shortcuts-buttons/issues"
   },
   "engines": {
     "node": "^18.20.4 || ^20.16.0 || ^22.6.0",

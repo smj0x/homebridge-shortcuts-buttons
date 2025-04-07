@@ -2,8 +2,8 @@
   "pluginAlias": "HomebridgeShortcutsButtons",
   "pluginType": "platform",
   "singular": true,
-  "headerDisplay": "Please refer to the <a target=\"_README\" rel=\"noreferrer\" rel=\"noopener\" href=\"https://github.com/duddu/homebridge-shortcuts-buttons#readme\">plugin documentation</a> for a more comprehensive explanation on this configuration.",
-  "footerDisplay": "Please refer to the <a target=\"_README\" rel=\"noreferrer\" rel=\"noopener\" href=\"https://github.com/duddu/homebridge-shortcuts-buttons#readme\">plugin documentation</a> for a more comprehensive explanation on this configuration.",
+  "headerDisplay": "Please refer to the <a target=\"_README\" rel=\"noreferrer\" rel=\"noopener\" href=\"https://github.com/smj0x/homebridge-shortcuts-buttons#readme\">plugin documentation</a> for a more comprehensive explanation on this configuration.",
+  "footerDisplay": "Please refer to the <a target=\"_README\" rel=\"noreferrer\" rel=\"noopener\" href=\"https://github.com/smj0x/homebridge-shortcuts-buttons#readme\">plugin documentation</a> for a more comprehensive explanation on this configuration.",
   "schema": {
     "type": "object",
     "properties": {
@@ -21,7 +21,7 @@
         "type": "string",
         "title": "Display buttons as",
         "enum": ["Outlet", "Switch"],
-        "description": "Display the shortcuts buttons as Outlets or as Switches. See the <a target=\"_README\" rel=\"noreferrer\" rel=\"noopener\" href=\"https://github.com/duddu/homebridge-shortcuts-buttons/tree/latest?tab=readme-ov-file#how-does-it-look-like\">related documentation</a> for a visual preview of the two options in the Apple Home app.",
+        "description": "Display the shortcuts buttons as Outlets or as Switches. See the <a target=\"_README\" rel=\"noreferrer\" rel=\"noopener\" href=\"https://github.com/smj0x/homebridge-shortcuts-buttons/tree/latest?tab=readme-ov-file#how-does-it-look-like\">related documentation</a> for a visual preview of the two options in the Apple Home app.",
         "default": "Outlet"
       },
       "services": {
@@ -57,7 +57,7 @@
         "type": "string",
         "title": "Callback Type",
         "enum": ["Default (display notification)", "Custom unix command", "Shortcut name"],
-        "description": "With the default option, after the shortcut completion, a notification with the outcome of the shortcut run is displayed on the host running Homebrige.<br>\nIf you choose to customize the callback behaviour, you have two choices: use any unix command that your host is able to execute, or just use another shortcut to handle the callback if you like. Depending on your choice, you must complete the next field accordingly.<br>\nPlease see the <a target=\"_README\" rel=\"noreferrer\" rel=\"noopener\" href=\"https://github.com/duddu/homebridge-shortcuts-buttons/tree/latest?tab=readme-ov-file#callback-command\">related documentation</a> for more detail.",
+        "description": "With the default option, after the shortcut completion, a notification with the outcome of the shortcut run is displayed on the host running Homebrige.<br>\nIf you choose to customize the callback behaviour, you have two choices: use any unix command that your host is able to execute, or just use another shortcut to handle the callback if you like. Depending on your choice, you must complete the next field accordingly.<br>\nPlease see the <a target=\"_README\" rel=\"noreferrer\" rel=\"noopener\" href=\"https://github.com/smj0x/homebridge-shortcuts-buttons/tree/latest?tab=readme-ov-file#callback-command\">related documentation</a> for more detail.",
         "default": "Default (display notification)",
         "condition": {
           "functionBody": "return model.callbackServerEnabled === true;"
@@ -66,7 +66,7 @@
       "callbackCustomCommand": {
         "type": "string",
         "title": "Custom callback command / callback shortcut name",
-        "description": "Either a unix command or the name of a shortcut to run, depending on the value selected in the previous field. In the former case, all the content of the field will be treated as a command and executed: in the latter, this field expects just the plain name of the shortcut as displayed in the Shortcuts app. If you left the previous field on the default value, any text inserted here will be ignored.<br>\nYou can also read input parameters from your custom command/shortcut. Please see the <a target=\"_README\" rel=\"noreferrer\" rel=\"noopener\" href=\"https://github.com/duddu/homebridge-shortcuts-buttons/tree/latest?tab=readme-ov-file#custom-unix-command\">related documentation</a> for more detail.",
+        "description": "Either a unix command or the name of a shortcut to run, depending on the value selected in the previous field. In the former case, all the content of the field will be treated as a command and executed: in the latter, this field expects just the plain name of the shortcut as displayed in the Shortcuts app. If you left the previous field on the default value, any text inserted here will be ignored.<br>\nYou can also read input parameters from your custom command/shortcut. Please see the <a target=\"_README\" rel=\"noreferrer\" rel=\"noopener\" href=\"https://github.com/smj0x/homebridge-shortcuts-buttons/tree/latest?tab=readme-ov-file#custom-unix-command\">related documentation</a> for more detail.",
         "condition": {
           "functionBody": "return model.callbackServerEnabled === true && model.callbackCommandType !== 'Default (display notification)';"
         }

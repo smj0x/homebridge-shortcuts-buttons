@@ -22,7 +22,7 @@ export interface HSBConfig extends Pick<PlatformConfig, '_bridge' | 'platform'> 
    */
   accessoryName: string;
   /**
-   * Display the shortcuts buttons as Outlets or as Switches. See the <a href="https://github.com/duddu/homebridge-shortcuts-buttons/tree/latest?tab=readme-ov-file#how-does-it-look-like">related documentation</a> for a visual preview of the two options in the Apple Home app.
+   * Display the shortcuts buttons as Outlets or as Switches. See the <a href="https://github.com/smj0x/homebridge-shortcuts-buttons/tree/latest?tab=readme-ov-file#how-does-it-look-like">related documentation</a> for a visual preview of the two options in the Apple Home app.
    *
    * @default "Outlet"
    */
@@ -52,14 +52,14 @@ export interface HSBConfig extends Pick<PlatformConfig, '_bridge' | 'platform'> 
   /**
    * With the default option, after the shortcut completion, a notification with the outcome of the shortcut run is displayed on the host running Homebrige.
    * If you choose to customize the callback behaviour, you have two choices: use any unix command that your host is able to execute, or just use another shortcut to handle the callback if you like. Depending on your choice, you must complete the next field accordingly.
-   * Please see the <a href="https://github.com/duddu/homebridge-shortcuts-buttons/tree/latest?tab=readme-ov-file#callback-command">related documentation</a> for more detail.
+   * Please see the <a href="https://github.com/smj0x/homebridge-shortcuts-buttons/tree/latest?tab=readme-ov-file#callback-command">related documentation</a> for more detail.
    *
    * @default "Default (display notification)"
    */
   callbackCommandType: 'Default (display notification)' | 'Custom unix command' | 'Shortcut name';
   /**
    * Either a unix command or the name of a shortcut to run, depending on the value selected in the previous field. In the former case, all the content of the field will be treated as a command and executed: in the latter, this field expects just the plain name of the shortcut as displayed in the Shortcuts app. If you left the previous field on the default value, any text inserted here will be ignored.
-   * You can also read input parameters from your custom command/shortcut. Please see the <a href="https://github.com/duddu/homebridge-shortcuts-buttons/tree/latest?tab=readme-ov-file#custom-unix-command">related documentation</a> for more detail.
+   * You can also read input parameters from your custom command/shortcut. Please see the <a href="https://github.com/smj0x/homebridge-shortcuts-buttons/tree/latest?tab=readme-ov-file#custom-unix-command">related documentation</a> for more detail.
    */
   callbackCustomCommand?: string;
   /**

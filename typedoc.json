@@ -11,7 +11,7 @@
   "plugin": ["typedoc-plugin-merge-modules", "typedoc-plugin-missing-exports"],
   "sort": ["kind", "alphabetical", "instance-first"],
   "tsconfig": "./tsconfig.json",
-  "hostedBaseUrl": "https://homebridge-shortcuts-buttons.duddu.dev",
+  "hostedBaseUrl": "https://homebridge-shortcuts-buttons.smj0x.dev",
   "useHostedBaseUrlForAbsoluteLinks": true,
   "favicon": "./assets/favicon.ico",
   "visibilityFilters": {
