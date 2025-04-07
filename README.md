@@ -135,6 +135,12 @@ After the decoding of the dictionary, you'll have your clear variables to access
 - Supports macOS 12+ (Monterey or more recent)
 - The Apple Shortcuts you wish to control with this plugin must be executable from the machine where Homebridge is installed. I.e. the user running Homebridge must be logged into an iCloud account which has access to those Shortcuts.
 
+## Credits
+
+This project is a fork of [homebridge-shortcuts-buttons](https://github.com/duddu/homebridge-shortcuts-buttons) originally created by [duddu](https://github.com/duddu).
+
+Special thanks to the original developer for creating the foundation of this plugin, which allows HomeKit buttons to trigger iOS shortcuts via Homebridge.
+
 ## Development
 
 Please feel free to open PRs from forked repo against the `latest` branch, I'll do my best to have a look asap. The plugin is pretty extensible and there are plenty of potential easy enhancements to make in case people find it useful.
