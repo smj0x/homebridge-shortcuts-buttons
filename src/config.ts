@@ -86,4 +86,28 @@ export interface HSBConfig extends Pick<PlatformConfig, '_bridge' | 'platform'> 
    * @default "http"
    */
   callbackServerProtocol: 'http' | 'https';
+  /**
+   * Enable this to run shortcuts on a remote macOS machine via SSH
+   */
+  sshEnabled?: boolean;
+  /**
+   * Hostname or IP address of the remote macOS machine
+   */
+  sshHost?: string;
+  /**
+   * SSH port (default: 22)
+   */
+  sshPort?: number;
+  /**
+   * Username for SSH authentication
+   */
+  sshUsername?: string;
+  /**
+   * Path to the SSH private key file
+   */
+  sshPrivateKeyPath?: string;
+  /**
+   * Passphrase for the SSH private key (if required)
+   */
+  sshPassphrase?: string;
 }

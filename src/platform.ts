@@ -1,4 +1,4 @@
-import { API, DynamicPlatformPlugin, Logger, PlatformConfig, Nullable } from 'homebridge';
+import { API, DynamicPlatformPlugin, Logger, PlatformConfig, Nullable, Service, Characteristic } from 'homebridge';
 
 import { HSBConfig } from './config.js';
 import { PLATFORM_NAME, PLUGIN_NAME } from './settings.js';
@@ -12,6 +12,10 @@ export class HSBPlatform implements DynamicPlatformPlugin {
   public readonly utils: HSBUtils;
   private readonly device: HSBDevice;
   private shortcutsRunner: ShortcutsRunner;
+  
+  // Expose homebridge Service and Characteristic for accessories
+  public readonly Service: typeof Service;
+  public readonly Characteristic: typeof Characteristic;
 
   public accessory: Nullable<HSBPlatformAccessory> = null;
   public server: Nullable<HSBXCallbackUrlServer> = null;
@@ -25,19 +29,29 @@ export class HSBPlatform implements DynamicPlatformPlugin {
       log.success = log.info;
     }
 
+    // Assign homebridge Service and Characteristic from the API
+    this.Service = this.api.hap.Service;
+    this.Characteristic = this.api.hap.Characteristic;
+
     this.config = _config as HSBConfig;
     this.device = new HSBDevice(this.config);
     this.utils = new HSBUtils(log);
 
-    // Configure SSH if enabled
-    const sshConfig: SSHConfig | undefined = this.config.sshEnabled ? {
-      enabled: true,
-      host: this.config.sshHost,
-      port: this.config.sshPort || 22,
-      username: this.config.sshUsername,
-      privateKeyPath: this.config.sshPrivateKeyPath,
-      passphrase: this.config.sshPassphrase
-    } : undefined;
+    // Configure SSH if enabled and all required fields are present
+    let sshConfig: SSHConfig | undefined = undefined;
+    if (this.config.sshEnabled && 
+        this.config.sshHost && 
+        this.config.sshUsername && 
+        this.config.sshPrivateKeyPath) {
+      sshConfig = {
+        enabled: true,
+        host: this.config.sshHost,
+        port: this.config.sshPort || 22,
+        username: this.config.sshUsername,
+        privateKeyPath: this.config.sshPrivateKeyPath,
+        passphrase: this.config.sshPassphrase
+      };
+    }
     
     this.shortcutsRunner = new ShortcutsRunner(this.log, sshConfig);
 

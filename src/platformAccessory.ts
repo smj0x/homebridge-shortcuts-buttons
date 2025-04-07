@@ -1,11 +1,11 @@
 import { Service, PlatformAccessory, CharacteristicValue } from 'homebridge';
-import { ShortcutsButtonsPlatform } from './platform';
+import { HSBPlatform } from './platform';
 
 export class ShortcutButtonAccessory {
   private service: Service;
 
   constructor(
-    private readonly platform: ShortcutsButtonsPlatform,
+    private readonly platform: HSBPlatform,
     private readonly accessory: PlatformAccessory,
   ) {
     // set accessory information
@@ -65,7 +65,8 @@ export class ShortcutButtonAccessory {
       // Reset button state after successful execution
       this.service.updateCharacteristic(this.platform.Characteristic.On, false);
     } catch (error) {
-      this.platform.log.error(`Failed to execute shortcut: ${error.message}`);
+      const errorMessage = error instanceof Error ? error.message : String(error);
+      this.platform.log.error(`Failed to execute shortcut: ${errorMessage}`);
       // Reset button state after failure
       this.service.updateCharacteristic(this.platform.Characteristic.On, false);
     }

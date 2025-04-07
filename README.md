@@ -66,19 +66,12 @@ The screenshots below give you an idea of how the end result may look like on an
 | Callback Server Hostname | `string` | `"127.0.0.1"` | IPv4 address or hostname to expose the internal x-callback-url http server (must be accessible from a browser on the machine running Homebridge). |
 | Callback Server Port | `number` | `63963` | A free port number for the internal x-callback-url HTTP server. |
 | Callback Server Protocol | `"http" \| "https"` | `"http"` | If you access other Homebridge services (e.g. UI) behind a reverse proxy with TLS certificate installed, you may want to access the x-callback-url server via https as well. |
-
-### SSH Configuration (Optional)
-
-You can configure the plugin to execute shortcuts on a remote macOS machine via SSH:
-
-- **Execute shortcuts via SSH**: Enable this option to run shortcuts on a remote macOS machine
-- **SSH Host**: Hostname or IP address of the remote macOS machine
-- **SSH Port**: SSH port (default: 22)
-- **SSH Username**: Username for SSH authentication
-- **SSH Private Key Path**: Path to the SSH private key file
-- **SSH Private Key Passphrase**: Passphrase for the SSH private key (if required)
-
-**Note**: The remote machine must have the Shortcuts app installed and configured properly.
+| Execute shortcuts via SSH | `boolean` | - | Enable this to run shortcuts on a remote macOS machine via SSH |
+| SSH Host | `string` | - | Hostname or IP address of the remote macOS machine |
+| SSH Port | `number` | `22` | SSH port (default: 22) |
+| SSH Username | `string` | - | Username for SSH authentication |
+| SSH Private Key Path | `string` | - | Path to the SSH private key file |
+| SSH Private Key Passphrase | `string` | - | Passphrase for the SSH private key (if required) |
 
 <!-- %COMPILED_CONFIG_END% -->
 

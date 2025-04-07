@@ -68,7 +68,7 @@ export class ShortcutsRunner {
           const cmd = `shortcuts run "${shortcutName}"`;
           
           this.log.debug(`Running command on remote host: ${cmd}`);
-          conn.exec(cmd, (err, stream) => {
+          conn.exec(cmd, (err: Error | undefined, stream: SSH2.ClientChannel) => {
             if (err) {
               conn.end();
               this.log.error(`SSH exec error: ${err.message}`);
@@ -79,7 +79,7 @@ export class ShortcutsRunner {
             let stdoutData = '';
             let stderrData = '';
             
-            stream.on('close', (code) => {
+            stream.on('close', (code: number) => {
               conn.end();
               if (code !== 0) {
                 this.log.error(`Remote command failed with code ${code}`);
@@ -92,17 +92,17 @@ export class ShortcutsRunner {
               resolve();
             });
             
-            stream.on('data', (data) => {
+            stream.on('data', (data: Buffer) => {
               stdoutData += data.toString();
             });
             
-            stream.stderr.on('data', (data) => {
+            stream.stderr.on('data', (data: Buffer) => {
               stderrData += data.toString();
             });
           });
         });
         
-        conn.on('error', (err) => {
+        conn.on('error', (err: Error) => {
           this.log.error(`SSH connection error: ${err.message}`);
           reject(err);
         });
@@ -115,7 +115,8 @@ export class ShortcutsRunner {
           passphrase: passphrase || undefined,
         });
       } catch (error) {
-        this.log.error(`Failed to establish SSH connection: ${error.message}`);
+        const errorMessage = error instanceof Error ? error.message : String(error);
+        this.log.error(`Failed to establish SSH connection: ${errorMessage}`);
         reject(error);
       }
     });
