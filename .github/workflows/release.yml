@@ -53,7 +53,9 @@ jobs:
 
       - name: Build
         run: npm run build
-
+      - uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.SEMANTIC_RELEASE_GIT_TOKEN }}
