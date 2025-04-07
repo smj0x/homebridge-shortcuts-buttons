@@ -67,6 +67,9 @@
     "typedoc-plugin-missing-exports": "^4.0.0",
     "typescript": "^5.8.2"
   },
+  "dependencies": {
+    "ssh2": "^1.11.0"
+  },
   "overrides": {
     "npm": ">=10.6",
     "rimraf": "$rimraf"

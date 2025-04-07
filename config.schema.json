@@ -104,6 +104,53 @@
         "condition": {
           "functionBody": "return model.callbackServerEnabled === true;"
         }
+      },
+      "sshEnabled": {
+        "title": "Execute shortcuts via SSH",
+        "description": "Enable this to run shortcuts on a remote macOS machine via SSH",
+        "type": "boolean",
+        "default": false
+      },
+      "sshHost": {
+        "title": "SSH Host",
+        "description": "Hostname or IP address of the remote macOS machine",
+        "type": "string",
+        "condition": {
+          "functionBody": "return model.sshEnabled === true;"
+        }
+      },
+      "sshPort": {
+        "title": "SSH Port",
+        "description": "SSH port (default: 22)",
+        "type": "number",
+        "default": 22,
+        "condition": {
+          "functionBody": "return model.sshEnabled === true;"
+        }
+      },
+      "sshUsername": {
+        "title": "SSH Username",
+        "description": "Username for SSH authentication",
+        "type": "string",
+        "condition": {
+          "functionBody": "return model.sshEnabled === true;"
+        }
+      },
+      "sshPrivateKeyPath": {
+        "title": "SSH Private Key Path",
+        "description": "Path to the SSH private key file",
+        "type": "string",
+        "condition": {
+          "functionBody": "return model.sshEnabled === true;"
+        }
+      },
+      "sshPassphrase": {
+        "title": "SSH Private Key Passphrase",
+        "description": "Passphrase for the SSH private key (if required)",
+        "type": "string",
+        "condition": {
+          "functionBody": "return model.sshEnabled === true;"
+        }
       }
     },
     "required": [

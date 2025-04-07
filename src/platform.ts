@@ -5,11 +5,13 @@ import { PLATFORM_NAME, PLUGIN_NAME } from './settings.js';
 import { HSBAccessory, HSBPlatformAccessory, HSBAccessoryContext, HSBDevice } from './accessory.js';
 import { HSBXCallbackUrlServer } from './server/index.js';
 import { HSBUtils } from './utils.js';
+import { ShortcutsRunner, SSHConfig } from './shortcutsRunner';
 
 export class HSBPlatform implements DynamicPlatformPlugin {
   public readonly config: HSBConfig;
   public readonly utils: HSBUtils;
   private readonly device: HSBDevice;
+  private shortcutsRunner: ShortcutsRunner;
 
   public accessory: Nullable<HSBPlatformAccessory> = null;
   public server: Nullable<HSBXCallbackUrlServer> = null;
@@ -26,6 +28,18 @@ export class HSBPlatform implements DynamicPlatformPlugin {
     this.config = _config as HSBConfig;
     this.device = new HSBDevice(this.config);
     this.utils = new HSBUtils(log);
+
+    // Configure SSH if enabled
+    const sshConfig: SSHConfig | undefined = this.config.sshEnabled ? {
+      enabled: true,
+      host: this.config.sshHost,
+      port: this.config.sshPort || 22,
+      username: this.config.sshUsername,
+      privateKeyPath: this.config.sshPrivateKeyPath,
+      passphrase: this.config.sshPassphrase
+    } : undefined;
+    
+    this.shortcutsRunner = new ShortcutsRunner(this.log, sshConfig);
 
     this.log.info('Platform initialized:', this.config.name);
 
@@ -87,5 +101,10 @@ export class HSBPlatform implements DynamicPlatformPlugin {
     }
 
     new HSBAccessory(this, this.accessory);
+  }
+
+  // Make the shortcuts runner available to accessories
+  getShortcutsRunner(): ShortcutsRunner {
+    return this.shortcutsRunner;
   }
 }
